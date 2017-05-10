@@ -56,7 +56,6 @@ REQUIRED_APPS = (
     'rest_framework',
     'djoser',
     'django_celery_beat',
-    'django_elasticsearch_dsl',
 )
 
 PROJECT_APPS = (
