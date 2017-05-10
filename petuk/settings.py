@@ -55,6 +55,8 @@ REQUIRED_APPS = (
     'django_extensions',
     'rest_framework',
     'djoser',
+    'django_celery_beat',
+    'django_elasticsearch_dsl',
 )
 
 PROJECT_APPS = (
@@ -273,3 +275,13 @@ DJOSER = {
         'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
     },
 }
+
+# Celery
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_IGNORE_RESULTS = True
+CELERY_ALWAYS_EAGER = True
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERYD_PREFETCH_MULTIPLIER = 10
+CELERY_TIMEZONE = 'UTC'
