@@ -56,6 +56,7 @@ REQUIRED_APPS = (
     'rest_framework',
     'djoser',
     'django_celery_beat',
+    'django_elasticsearch_dsl',
 )
 
 PROJECT_APPS = (
@@ -273,6 +274,12 @@ DJOSER = {
         'password_reset': 'djoser.serializers.PasswordResetSerializer',
         'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
     },
+}
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://127.0.0.1:9200/'
+    }
 }
 
 # Celery
