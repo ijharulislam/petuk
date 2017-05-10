@@ -9,3 +9,4 @@ redis==2.10.5
 django-extensions==1.7.9
 djoser==0.5.4
 psycopg2==2.6.2
+git+git://github.com/russelmahmud/django-elasticsearch-dsl@master#egg=django-elasticsearch-dsl

@@ -258,15 +258,6 @@ CACHES = {
 # EMAIL SETTINGS
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-# CELERY SETTINGS
-CELERY_RESULT_BACKEND = "redis://localhost:6379/2"
-BROKER_URL = 'redis://localhost:6379/2'
-
-import djcelery
-djcelery.setup_loader()
-
-
 # Set site related settings below...
 SITE_ID = 1
 
