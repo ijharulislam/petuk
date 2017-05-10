@@ -1,0 +1,11 @@
+celery==4.0.2
+Django==1.11.1
+django-celery-beat==1.0.1
+django-filter==1.0.1
+django-redis==4.8.0
+djangorestframework==3.5.3
+pytz==2017.2
+redis==2.10.5
+django-extensions==1.7.9
+djoser==0.5.4
+psycopg2==2.6.2
