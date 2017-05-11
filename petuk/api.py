@@ -1,14 +1,13 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from restaurant.views import CategoryViewSet, RestaurantViewSet, RestaurantImageViewSet, ReviewViewSet, MenuViewSet, MenuItemViewSet
+from restaurant.views import CategoryViewSet, RestaurantViewSet, RestaurantImageViewSet, ReviewViewSet, ItemViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'categories', CategoryViewSet, base_name='category')
 router.register(r'restaurants', RestaurantViewSet, base_name='restaurant')
 router.register(r'restaurants/images', RestaurantImageViewSet, base_name='restaurant-images')
-router.register(r'menus', MenuViewSet, base_name='menu')
-router.register(r'menu-items', MenuItemViewSet, base_name='menu-item')
+router.register(r'items', ItemViewSet, base_name='menu-item')
 
 
 class RestAPI(object):

@@ -18,7 +18,6 @@ class Category(models.Model):
 
 
 class Restaurant(models.Model):
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     category = models.ManyToManyField(Category)
     name = models.CharField(max_length=250, blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
@@ -71,25 +70,42 @@ class Review(models.Model):
     rating = models.IntegerField()
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return '{}'.format(self.restaurant.name)
 
 
-class Menu(models.Model):
-    restaurant = models.ForeignKey(Restaurant)
-    name = models.CharField(max_length=250, blank=True, null=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
-    available = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
-
-class MenuItem(models.Model):
+class Item(models.Model):
+    restaurant = models.ForeignKey('Restaurant')
     name = models.CharField(max_length=250)
     description = models.CharField(max_length=500, blank=True, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=5)
-    available = models.BooleanField(default=False)
-    menu = models.ForeignKey(Menu)
+    is_available = models.BooleanField(default=False)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    @property
+    def ratings(self):
+        rating = 0
+        reviews = ItemReview.objects.filter(item=self)
+        for review in reviews:
+            rating += review.rating
+        if rating:
+            avg = rating / reviews.count()
+            return avg
+        else:
+            return 'No reviews yet!'
+
+
+class ItemImage(models.Model):
+    item = models.ForeignKey(Item)
+    image = models.ImageField(upload_to='media/restaurant/menu')
+
+
+class ItemReview(models.Model):
+    user = models.CharField(max_length=250, blank=True, null=True)
+    item = models.ForeignKey('Item')
+    description = models.TextField(blank=True, null=True)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return '{}'.format(self.item.name)

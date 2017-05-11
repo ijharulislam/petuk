@@ -28,13 +28,19 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MenuSerializer(serializers.ModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Menu
+        model = Item
         fields = '__all__'
 
 
-class MenuItemSerializer(serializers.ModelSerializer):
+class ItemImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MenuItem
+        model = ItemImage
+        fields = '__all__'
+
+
+class ItemReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ItemReview
         fields = '__all__'

@@ -24,12 +24,7 @@ class ReviewViewSet(BaseModelViewSet):
     serializer_class = ReviewSerializer
 
 
-class MenuViewSet(BaseModelViewSet):
-    queryset = Menu.objects.all()
-    serializer_class = MenuSerializer
-
-
-class MenuItemViewSet(BaseModelViewSet):
-    queryset = MenuItem.objects.all()
-    serializer_class = MenuItemSerializer
+class ItemViewSet(BaseModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
