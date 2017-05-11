@@ -11,4 +11,6 @@ djoser==0.5.4
 psycopg2==2.6.2
 PyJWT==1.5.0
 djangorestframework-jwt==1.10.0
+sorl-thumbnail==12.3
 git+git://github.com/russelmahmud/django-elasticsearch-dsl@master#egg=django-elasticsearch-dsl
+Pillow==4.1.1
