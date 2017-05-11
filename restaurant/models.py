@@ -2,8 +2,6 @@ import uuid
 from django.db import models
 
 
-# Create your models here.
-
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(null=True, blank=True)
@@ -55,7 +53,7 @@ class Restaurant(models.Model):
         reviews = Review.objects.filter(restaurant=self)
         for review in reviews:
             rating += review.rating
-        if rating != 0:
+        if rating:
             avg = rating / reviews.count()
             return avg
         else:

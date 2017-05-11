@@ -14,3 +14,4 @@ djangorestframework-jwt==1.10.0
 sorl-thumbnail==12.3
 git+git://github.com/russelmahmud/django-elasticsearch-dsl@master#egg=django-elasticsearch-dsl
 Pillow==4.1.1
+django-redis-cache==1.7.1

@@ -58,6 +58,8 @@ REQUIRED_APPS = (
     'django_celery_beat',
     'django_elasticsearch_dsl',
     'sorl.thumbnail',
+    'redis_cache',
+    'django_filters',
 )
 
 PROJECT_APPS = (
@@ -184,8 +186,8 @@ REST_FRAMEWORK = {
         'anon': '1000/min',
         'user': '2000/min'
     },
-    'DEFAULT_PAGINATION_CLASS': 'common.pagination.CustomPagination',
-    'PAGE_SIZE': 20,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 25,
 }
 
 
