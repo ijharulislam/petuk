@@ -64,6 +64,7 @@ REQUIRED_APPS = (
 
 PROJECT_APPS = (
     # This project
+    'common',
     'account',
     'restaurant',
     'offer'
