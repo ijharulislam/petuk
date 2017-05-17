@@ -1,8 +1,10 @@
 from django.conf.urls import url, include
 from rest_framework import routers
+from rest_framework_jwt import views as jwt
+from djoser import views
 
 from restaurant.views import CategoryViewSet, RestaurantViewSet, RestaurantImageViewSet, ReviewViewSet, ItemViewSet
-
+from account.views import UserRegistration
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'categories', CategoryViewSet, base_name='category')
 router.register(r'restaurants', RestaurantViewSet, base_name='restaurant')
@@ -17,6 +19,12 @@ class RestAPI(object):
     def get_urls(self):
         urlpatterns = [
             url(r'^', include(router.urls)),
+            url(r'^api-token-auth/', jwt.obtain_jwt_token),
+            url(r'^api-token-refresh/', jwt.refresh_jwt_token),
+            url(r'register', UserRegistration.as_view(), name="register"),
+            url(r'^password/$', views.SetPasswordView.as_view(), name='set_password'),
+            url(r'^password/reset/$', views.PasswordResetView.as_view(), name='password_reset'),
+            url(r'^password/reset/confirm/$', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
         ]
         return urlpatterns
 

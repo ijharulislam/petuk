@@ -4,15 +4,9 @@ from .models import User
 
 class UserRegistrationSerializer(ModelSerializer):
 
-    def validate(self, data):
-        password = self.initial_data['password']
-        confirm_password = self.initial_data['confirm_password']
-        if password != confirm_password:
-            raise ValidationError('Password does not match!')
-        return data
-
     def create(self, validated_data):
         password = validated_data['password']
+        validated_data['is_active'] = True
         instance = self.Meta.model(**validated_data)
         if password:
             instance.set_password(password)
@@ -23,8 +17,8 @@ class UserRegistrationSerializer(ModelSerializer):
         model = User
         fields = (
             'email',
-            'first_name',
-            'last_name',
+            'phone',
+            'full_name',
             'password'
         )
         extra_kwargs = {
