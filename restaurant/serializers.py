@@ -10,15 +10,17 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RestaurantSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Restaurant
-        fields = '__all__'
-
-
 class RestaurantImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantImage
+        fields = '__all__'
+
+
+class RestaurantSerializer(serializers.ModelSerializer):
+    images = RestaurantImageSerializer()
+
+    class Meta:
+        model = Restaurant
         fields = '__all__'
 
 
@@ -28,15 +30,17 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Item
-        fields = '__all__'
-
-
 class ItemImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemImage
+        fields = '__all__'
+
+
+class ItemSerializer(serializers.ModelSerializer):
+    images = ItemImageSerializer()
+
+    class Meta:
+        model = Item
         fields = '__all__'
 
 

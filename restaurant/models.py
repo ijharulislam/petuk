@@ -97,7 +97,7 @@ class Item(models.Model):
 
 
 class ItemImage(models.Model):
-    item = models.ForeignKey(Item)
+    item = models.ForeignKey(Item, related_name='images')
     image = models.ImageField(upload_to='media/restaurant/menu')
 
 
