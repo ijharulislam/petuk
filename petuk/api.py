@@ -5,11 +5,13 @@ from djoser import views
 
 from restaurant.views import CategoryViewSet, RestaurantViewSet, RestaurantImageViewSet, ReviewViewSet, ItemViewSet
 from account.views import UserRegistration
+from offer.views import OfferViewSet
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'categories', CategoryViewSet, base_name='category')
 router.register(r'restaurants', RestaurantViewSet, base_name='restaurant')
 router.register(r'restaurants/images', RestaurantImageViewSet, base_name='restaurant-images')
 router.register(r'items', ItemViewSet, base_name='menu-item')
+router.register(r'offers', OfferViewSet, base_name='offer')
 
 
 class RestAPI(object):
