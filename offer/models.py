@@ -19,4 +19,4 @@ class Offer(models.Model):
 
     @property
     def offer_amount(self):
-        return self.price * (100/self.discount)
+        return self.price * (self.discount/100)
