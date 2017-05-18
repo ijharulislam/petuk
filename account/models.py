@@ -18,7 +18,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'user'
         verbose_name_plural ='users'
 
-    def __unicode__(self):
+    def __str__(self):
         if self.email:
             return u"Email: {}".format(self.email)
         return u"Phone: {}".format(self.phone)

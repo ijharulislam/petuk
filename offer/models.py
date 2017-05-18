@@ -14,7 +14,7 @@ class Offer(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'Restaurant:{0}, offer:{1}'.format(self.restaurant.name, self.offer_amount)
 
     @property

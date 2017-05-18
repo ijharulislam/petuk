@@ -68,7 +68,8 @@ PROJECT_APPS = (
     'common',
     'account',
     'restaurant',
-    'offer'
+    'offer',
+    'trending',
 )
 
 INSTALLED_APPS = REQUIRED_APPS + PROJECT_APPS
