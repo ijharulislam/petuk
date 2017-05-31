@@ -11,7 +11,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=False)
     objects = UserManager()
 
-    USERNAME_FIELD = 'phone'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:
@@ -22,3 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         if self.email:
             return u"Email: {}".format(self.email)
         return u"Phone: {}".format(self.phone)
+
+    @property
+    def is_staff(self):
+        return self.is_admin

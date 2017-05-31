@@ -17,7 +17,7 @@ class RestaurantImageSerializer(serializers.ModelSerializer):
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
-    images = RestaurantImageSerializer()
+    images = RestaurantImageSerializer(read_only=True, many=True)
 
     class Meta:
         model = Restaurant
@@ -37,7 +37,7 @@ class ItemImageSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    images = ItemImageSerializer()
+    images = ItemImageSerializer(read_only=True)
 
     class Meta:
         model = Item
