@@ -8,8 +8,8 @@ from .managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=50, blank=True, null=True)
-    email = models.EmailField(unique=True, db_index=True)
-    phone = models.CharField(unique=True, max_length=20, blank=True, null=True)
+    email = models.EmailField(unique=True, db_index=True, blank=True, null=True)
+    phone = models.CharField(unique=True, max_length=20)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(_('staff status'), default=False,
                                    help_text=_('Designates whether the user can log into this admin site.'))
@@ -20,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = 'user'
-        verbose_name_plural ='users'
+        verbose_name_plural = 'users'
 
     def __str__(self):
         if self.email:
