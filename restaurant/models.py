@@ -23,17 +23,10 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=20, blank=True, null=True)
     address = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=250, default="Dhaka")
-    postal_code = models.CharField(max_length=250, blank=True, null=True)
     lat = models.FloatField(default=0.0)
     lon = models.FloatField(default=0.0)
-    delivery = models.NullBooleanField()
-    buffet = models.NullBooleanField()
-    outdoor_seating = models.NullBooleanField()
-    party_room = models.NullBooleanField()
-    accepts_reservations = models.NullBooleanField()
-    has_carryouts = models.NullBooleanField()
-    has_kids_menu = models.NullBooleanField()
-    has_wifi = models.NullBooleanField()
+    logo = models.ImageField(upload_to='media/restaurant', blank=True, null=True)
+    featured_image = models.ImageField(upload_to='media/restaurant', blank=True, null=True)
     is_featured = models.BooleanField(default=False)
     tags = models.CharField(max_length=100, null=True, blank=True,
                             help_text='Comma-delimited set of SEO keywords for meta tag')
@@ -77,7 +70,7 @@ class Item(models.Model):
     restaurant = models.ForeignKey('Restaurant')
     name = models.CharField(max_length=250)
     description = models.CharField(max_length=500, blank=True, null=True)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
+    price = models.DecimalField(decimal_places=2, max_digits=20)
     is_available = models.BooleanField(default=False)
 
     def __str__(self):
