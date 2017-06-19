@@ -176,6 +176,10 @@ STATICFILES_DIRS = (
 
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'staticfiles_env', 'media_root',)
+
+
 
 # REST FRAMEWORK
 REST_FRAMEWORK = {
