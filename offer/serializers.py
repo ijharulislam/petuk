@@ -4,9 +4,10 @@ from restaurant.serializers import RestaurantSerializer, ItemSerializer
 
 
 class OfferSerializer(ModelSerializer):
-    restaurant = RestaurantSerializer(read_only=True)
-    item = ItemSerializer(read_only=True)
+    offers = RestaurantSerializer(read_only=True, many=True)
+    item_offers = ItemSerializer(read_only=True, many=True)
 
     class Meta:
         model = Offer
         fields = '__all__'
+        depth = 1
