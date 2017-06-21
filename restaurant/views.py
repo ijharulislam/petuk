@@ -28,6 +28,12 @@ class RestaurantViewSet(BaseModelViewSet):
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
+    @list_route(methods=['GET'])
+    def featured(self, request):
+        restaurants = Restaurant.objects.filter(is_featured=True)
+        serializer = RestaurantSerializer(restaurants, many=True)
+        return Response(serializer.data)
+
 
 class RestaurantImageViewSet(BaseModelViewSet):
     queryset = RestaurantImage.objects.all()
