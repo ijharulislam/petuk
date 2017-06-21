@@ -4,8 +4,8 @@ from restaurant.serializers import RestaurantSerializer, ItemSerializer
 
 
 class OfferSerializer(ModelSerializer):
-    restaurant = RestaurantSerializer(read_only=True, many=True)
-    item = ItemSerializer(read_only=True, many=True)
+    restaurant = RestaurantSerializer(read_only=True)
+    item = ItemSerializer(read_only=True)
 
     class Meta:
         model = Offer
