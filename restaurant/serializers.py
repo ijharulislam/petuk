@@ -17,7 +17,6 @@ class RestaurantImageSerializer(serializers.ModelSerializer):
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
-    images = RestaurantImageSerializer(read_only=True, many=True)
     category = CategorySerializer(read_only=True, many=True)
     top_category = serializers.ReadOnlyField()
 
