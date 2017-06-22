@@ -49,14 +49,12 @@ class RestaurantViewSet(BaseModelViewSet):
             )|Restaurant.objects.filter(name__icontains=query)|\
                 Restaurant.objects.filter(address__icontains=query)|\
                 Restaurant.objects.filter(address__icontains=query)|\
-                Restaurant.objects.filter(tags__icontains=query)|\
-                Restaurant.objects.filter(category__name__icontains=query)
+                Restaurant.objects.filter(tags__icontains=query)
         else:
             restaurants = Restaurant.objects.filter(name__icontains=query) | \
             Restaurant.objects.filter(address__icontains=query) | \
             Restaurant.objects.filter(address__icontains=query) | \
-            Restaurant.objects.filter(tags__icontains=query) | \
-            Restaurant.objects.filter(category__name__icontains=query)
+            Restaurant.objects.filter(tags__icontains=query)
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
