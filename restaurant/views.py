@@ -36,8 +36,8 @@ class RestaurantViewSet(BaseModelViewSet):
 
     @list_route(methods=['GET'])
     def search(self, request):
-        lat = request.query_params.get('lat')
-        lon = request.query_params.get('lon')
+        lat = float(request.query_params.get('lat'))
+        lon = float(request.query_params.get('lon'))
         query = request.query_params.get('query_param')
         points = 20 * .008
         if lat and lon:
