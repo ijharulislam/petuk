@@ -34,6 +34,32 @@ class RestaurantViewSet(BaseModelViewSet):
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
+    @list_route(methods=['GET'])
+    def search(self, request):
+        lat = request.query_params.get('lat')
+        lon = request.query_params.get('lon')
+        query = request.query_params.get('query_param')
+        points = 20 * .008
+        if lat and lon:
+            restaurants = Restaurant.objects.filter(
+                lat__gte=lat - points,
+                lat__lte=lat + points,
+                lon__gte=lon - points,
+                lon__lte=lon + points,
+            )|Restaurant.objects.filter(name__icontains=query)|\
+                Restaurant.objects.filter(address__icontains=query)|\
+                Restaurant.objects.filter(address__icontains=query)|\
+                Restaurant.objects.filter(tags__icontains=query)|\
+                Restaurant.objects.filter(category__name__icontains=query)
+        else:
+            restaurants = Restaurant.objects.filter(name__icontains=query) | \
+            Restaurant.objects.filter(address__icontains=query) | \
+            Restaurant.objects.filter(address__icontains=query) | \
+            Restaurant.objects.filter(tags__icontains=query) | \
+            Restaurant.objects.filter(category__name__icontains=query)
+        serializer = RestaurantSerializer(restaurants, many=True)
+        return Response(serializer.data)
+
 
 class RestaurantImageViewSet(BaseModelViewSet):
     queryset = RestaurantImage.objects.all()
