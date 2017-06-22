@@ -47,12 +47,9 @@ class RestaurantViewSet(BaseModelViewSet):
                 lon__gte=lon - points,
                 lon__lte=lon + points,
             )|Restaurant.objects.filter(name__icontains=query)|\
-                Restaurant.objects.filter(address__icontains=query)|\
-                Restaurant.objects.filter(address__icontains=query)|\
                 Restaurant.objects.filter(tags__icontains=query)
         else:
             restaurants = Restaurant.objects.filter(name__icontains=query) | \
-            Restaurant.objects.filter(address__icontains=query) | \
             Restaurant.objects.filter(address__icontains=query) | \
             Restaurant.objects.filter(tags__icontains=query)
         serializer = RestaurantSerializer(restaurants, many=True)
